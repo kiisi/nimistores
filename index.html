@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nimistores | African Specialty Shop Gloucester</title>
+  <meta name="description" content="Nimistores is Gloucester's African specialty store offering fresh produce, authentic spices, grains, and frozen goods.">
+
+  <!-- Google Fonts: Outfit (Display) & Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#3964FE',
+              dark: '#2648CC',
+              light: '#EEF2FF',
+              surface: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          keyframes: {
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            }
+          },
+          animation: {
+            'float-slow': 'floatSlow 5s ease-in-out infinite',
+            marquee: 'marquee 25s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Strict NO-BOX-SHADOW design enforcement */
+    *, ::before, ::after {
+      box-shadow: none !important;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+
+    /* Animated underline nav link */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #3964FE;
+      transition: width 0.2s ease-out;
+      border-radius: 99px;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-brand selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT BANNER -->
+  <div class="bg-slate-900 text-white text-xs font-medium py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>Unit 26A Morelands Trading Estate, Bristol Road, Gloucester GL1 5RZ</span>
+      </div>
+      <div class="hidden sm:block text-slate-400">Mon - Sat: 9am - 7pm | Sun: 11am - 5pm</div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVBAR (Minimal & Uncluttered: 4 Nav Items + CTA) -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-brand flex items-center justify-center text-white font-display font-black text-xl border border-brand-dark/20">
+          N
+        </div>
+        <span class="font-display font-extrabold text-xl tracking-tight text-slate-900">
+          Nimi<span class="text-brand">stores</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav Links (Clean 4 Items Only) -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
+        <a href="#products" class="nav-link hover:text-brand transition-colors">Products</a>
+        <a href="#about" class="nav-link hover:text-brand transition-colors">About</a>
+        <a href="#why-us" class="nav-link hover:text-brand transition-colors">Why Us</a>
+        <a href="#contact" class="nav-link hover:text-brand transition-colors">Contact</a>
+      </div>
+
+      <!-- Action CTA Button -->
+      <div class="hidden sm:flex items-center">
+        <a href="#contact" class="inline-flex items-center justify-center px-5 py-2 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-dark transition-all">
+          Visit Store
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100" aria-label="Toggle menu">
+        <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+    </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-5 space-y-2">
+      <a href="#products" class="mobile-link block px-3 py-2 rounded-lg text-slate-800 font-semibold hover:bg-brand-light hover:text-brand">Products</a>
+      <a href="#about" class="mobile-link block px-3 py-2 rounded-lg text-slate-800 font-semibold hover:bg-brand-light hover:text-brand">About</a>
+      <a href="#why-us" class="mobile-link block px-3 py-2 rounded-lg text-slate-800 font-semibold hover:bg-brand-light hover:text-brand">Why Us</a>
+      <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg text-slate-800 font-semibold hover:bg-brand-light hover:text-brand">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" class="w-full text-center block px-4 py-2.5 rounded-xl bg-brand text-white font-bold hover:bg-brand-dark">Visit Store</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION (Punchy & Concise Copy) -->
+  <section id="home" class="relative pt-12 pb-20 lg:pt-16 lg:pb-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Hero Copy -->
+        <div class="lg:col-span-7 space-y-5 text-left reveal active">
+          
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-light border border-brand/20 text-brand font-bold text-xs uppercase tracking-wider">
+            Gloucester African Grocery
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight">
+            African Groceries, <span class="text-brand">Fresh in Gloucester.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 max-w-xl font-normal leading-relaxed">
+            Fresh yams, authentic spices, grains, drinks, and frozen traditional foods. Sourced directly and delivered locally across Gloucester.
+          </p>
+
+          <!-- Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+            <a href="#products" class="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-brand text-white font-bold text-sm hover:bg-brand-dark transition-all">
+              <span>Browse Products</span>
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            
+            <a href="#contact" class="inline-flex items-center justify-center px-7 py-3.5 rounded-xl border border-slate-300 bg-white text-slate-800 font-bold text-sm hover:border-brand hover:text-brand transition-all">
+              <span>Find Our Store</span>
+            </a>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="pt-6 border-t border-slate-200 grid grid-cols-3 gap-4">
+            <div>
+              <p class="font-display font-bold text-2xl text-slate-900">100%</p>
+              <p class="text-xs text-slate-500 font-medium">Authentic Items</p>
+            </div>
+            <div>
+              <p class="font-display font-bold text-2xl text-brand">Same-Day</p>
+              <p class="text-xs text-slate-500 font-medium">Local Delivery</p>
+            </div>
+            <div>
+              <p class="font-display font-bold text-2xl text-slate-900">1,000+</p>
+              <p class="text-xs text-slate-500 font-medium">Stocked Products</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Image -->
+        <div class="lg:col-span-5 relative reveal delay-200">
+          <div class="relative">
+            <div class="rounded-2xl overflow-hidden border-2 border-slate-200 bg-white">
+              <img 
+                src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&auto=format&fit=crop" 
+                alt="Nimistores Produce Market" 
+                class="w-full h-[360px] object-cover"
+              >
+            </div>
+            
+            <div class="absolute -bottom-4 -left-4 bg-white border border-slate-200 p-3 rounded-xl hidden sm:flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">✓</div>
+              <div>
+                <p class="text-xs font-bold text-slate-900">Restocked Weekly</p>
+                <p class="text-[10px] text-slate-500">Fresh Ghana Yams</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE TICKER -->
+  <div class="bg-slate-900 text-white py-3 overflow-hidden border-y border-slate-800 text-xs font-semibold uppercase tracking-wider">
+    <div class="flex whitespace-nowrap animate-marquee">
+      <div class="flex items-center gap-8 text-slate-300">
+        <span>Fresh Ghana Yam</span> • <span>Suya Seasoning</span> • <span>Red Palm Oil</span> • <span>Egusi & Ogbono</span> • <span>Maltina</span> • <span>Frozen Tilapia</span> • <span>Garri & Flour</span> • <span>Plantain Chips</span>
+      </div>
+      <div class="flex items-center gap-8 text-slate-300 ml-8">
+        <span>Fresh Ghana Yam</span> • <span>Suya Seasoning</span> • <span>Red Palm Oil</span> • <span>Egusi & Ogbono</span> • <span>Maltina</span> • <span>Frozen Tilapia</span> • <span>Garri & Flour</span> • <span>Plantain Chips</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION (Concise & Direct) -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-6 reveal">
+          <div class="rounded-2xl overflow-hidden border border-slate-200">
+            <img 
+              src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=800&auto=format&fit=crop" 
+              alt="Inside Nimistores Market" 
+              class="w-full h-[360px] object-cover"
+            >
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-4 reveal delay-100">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">About Nimistores</span>
+          
+          <h2 class="font-display text-3xl font-extrabold text-slate-900">
+            Fresh Ingredients, Rooted in Tradition.
+          </h2>
+
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Based at Morelands Trading Estate on Bristol Road, Nimistores supplies Gloucester with genuine West African groceries. We stock high-quality staples directly imported to ensure your meals taste like home.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-3 pt-2 text-xs font-semibold text-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="text-brand">✓</span> Direct Importer Sources
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-brand">✓</span> Clean & Freshly Stocked
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-brand">✓</span> Same-Day Local Delivery
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-brand">✓</span> Friendly Store Service
+            </div>
+          </div>
+
+          <div class="pt-3">
+            <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-brand transition-colors">
+              <span>Visit Us Today</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION (6 Essential Cards) -->
+  <section id="products" class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand">Our Products</span>
+        <h2 class="font-display text-3xl font-extrabold text-slate-900 mt-1">
+          Featured Pantry Categories
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Product Card 1 -->
+        <div class="reveal delay-100 bg-white rounded-xl border border-slate-200 hover:border-brand transition-all overflow-hidden">
+          <div class="h-48 bg-slate-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=600&auto=format&fit=crop" alt="Ghana Yams & Plantains" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-slate-900">Ghana Yams & Plantains</h3>
+            <p class="text-xs text-slate-500 mt-1">Pona yams, ripe & green plantains, cocoyams, and sweet potatoes.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-900">From £3.99 / kg</span>
+              <a href="#contact" class="text-brand hover:underline">In Stock →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="reveal delay-200 bg-white rounded-xl border border-slate-200 hover:border-brand transition-all overflow-hidden">
+          <div class="h-48 bg-slate-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop" alt="Authentic Spices" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-slate-900">Authentic Spices</h3>
+            <p class="text-xs text-slate-500 mt-1">Suya pepper, Cameroun pepper, Locust bean (Iru), crayfish, and seasonings.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-900">From £1.99 / pack</span>
+              <a href="#contact" class="text-brand hover:underline">In Stock →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="reveal delay-300 bg-white rounded-xl border border-slate-200 hover:border-brand transition-all overflow-hidden">
+          <div class="h-48 bg-slate-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop" alt="Rice & Grains" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-slate-900">Rice & Grains</h3>
+            <p class="text-xs text-slate-500 mt-1">Parboiled rice, Ofada rice, Honey beans (Ewa Oloyin), and pulses.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-900">From £6.50 / bag</span>
+              <a href="#contact" class="text-brand hover:underline">In Stock →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="reveal delay-100 bg-white rounded-xl border border-slate-200 hover:border-brand transition-all overflow-hidden">
+          <div class="h-48 bg-slate-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=600&auto=format&fit=crop" alt="Drinks & Malt" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-slate-900">Drinks & Malt</h3>
+            <p class="text-xs text-slate-500 mt-1">Maltina, Amstel Malt, Supermalt, Chivita juices, and Zobo hibiscus.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-900">From £1.50 / can</span>
+              <a href="#contact" class="text-brand hover:underline">In Stock →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 5 -->
+        <div class="reveal delay-200 bg-white rounded-xl border border-slate-200 hover:border-brand transition-all overflow-hidden">
+          <div class="h-48 bg-slate-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&auto=format&fit=crop" alt="Frozen Meats & Fish" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-slate-900">Frozen Meats & Fish</h3>
+            <p class="text-xs text-slate-500 mt-1">Goat meat, hard chicken, cow skin (Ponmo), Tilapia, and Stockfish.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-900">From £4.99 / pack</span>
+              <a href="#contact" class="text-brand hover:underline">In Stock →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 6 -->
+        <div class="reveal delay-300 bg-white rounded-xl border border-slate-200 hover:border-brand transition-all overflow-hidden">
+          <div class="h-48 bg-slate-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop" alt="Swallow & Flours" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-slate-900">Swallow & Flours</h3>
+            <p class="text-xs text-slate-500 mt-1">Garri (yellow & white), Pounded Yam flour (Iyan), Amala, and Semovita.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-900">From £3.50 / bag</span>
+              <a href="#contact" class="text-brand hover:underline">In Stock →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US & STATS -->
+  <section id="why-us" class="py-20 bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand">Why Choose Us</span>
+        <h2 class="font-display text-3xl font-extrabold text-slate-900 mt-1">
+          Quality & Service You Can Trust
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        
+        <div class="reveal delay-100 p-6 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center font-bold mb-3">✓</div>
+          <h3 class="font-display font-bold text-base text-slate-900">Genuine Imports</h3>
+          <p class="text-xs text-slate-500 mt-1">Directly imported for authentic taste and freshness.</p>
+        </div>
+
+        <div class="reveal delay-200 p-6 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center font-bold mb-3">⚡</div>
+          <h3 class="font-display font-bold text-base text-slate-900">Same-Day Delivery</h3>
+          <p class="text-xs text-slate-500 mt-1">Fast local delivery across Gloucester.</p>
+        </div>
+
+        <div class="reveal delay-300 p-6 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center font-bold mb-3">£</div>
+          <h3 class="font-display font-bold text-base text-slate-900">Fair Pricing</h3>
+          <p class="text-xs text-slate-500 mt-1">Competitive everyday prices & bulk family savings.</p>
+        </div>
+
+        <div class="reveal delay-400 p-6 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center font-bold mb-3">♥</div>
+          <h3 class="font-display font-bold text-base text-slate-900">Community First</h3>
+          <p class="text-xs text-slate-500 mt-1">Serving local African and Caribbean families.</p>
+        </div>
+
+      </div>
+
+      <!-- Stat Counters -->
+      <div id="stats-counter-section" class="reveal bg-brand text-white rounded-2xl p-8 border border-brand-dark text-center">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div>
+            <div class="font-display text-4xl font-black"><span class="stat-number" data-target="500">0</span>+</div>
+            <p class="text-xs font-semibold text-blue-100 mt-1">Gloucester Customers</p>
+          </div>
+          <div>
+            <div class="font-display text-4xl font-black"><span class="stat-number" data-target="1000">0</span>+</div>
+            <p class="text-xs font-semibold text-blue-100 mt-1">Products Stocked</p>
+          </div>
+          <div>
+            <div class="font-display text-4xl font-black"><span class="stat-number" data-target="100">0</span>%</div>
+            <p class="text-xs font-semibold text-blue-100 mt-1">Quality Guarantee</p>
+          </div>
+          <div>
+            <div class="font-display text-4xl font-black">6 Days</div>
+            <p class="text-xs font-semibold text-blue-100 mt-1">Open Weekly</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SLIDER -->
+  <section id="testimonials" class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+      
+      <span class="text-xs font-bold uppercase tracking-wider text-brand">Customer Feedback</span>
+      <h2 class="font-display text-3xl font-extrabold text-slate-900 mt-1 mb-8">What Our Customers Say</h2>
+
+      <div id="testimonial-slider" class="bg-white border border-slate-200 rounded-2xl p-8 text-left">
+        
+        <div class="testimonial-slide">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop" alt="Chioma" class="w-12 h-12 rounded-full object-cover">
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm">Chioma Okonkwo</h4>
+              <p class="text-xs text-slate-500">Gloucester Resident</p>
+            </div>
+          </div>
+          <p class="text-slate-700 text-sm italic">"Finding fresh yams and genuine spices in Gloucester used to be hard. Nimistores is clean, friendly, and always well-stocked."</p>
+        </div>
+
+        <div class="testimonial-slide hidden">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop" alt="Kwame" class="w-12 h-12 rounded-full object-cover">
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm">Kwame Mensah</h4>
+              <p class="text-xs text-slate-500">Cheltenham Customer</p>
+            </div>
+          </div>
+          <p class="text-slate-700 text-sm italic">"Their same-day delivery service is fantastic. Ordered plantains and malt in the morning and got them before dinner!"</p>
+        </div>
+
+        <div class="testimonial-slide hidden">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=200&auto=format&fit=crop" alt="Amara" class="w-12 h-12 rounded-full object-cover">
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm">Amara Kalu</h4>
+              <p class="text-xs text-slate-500">Gloucester Resident</p>
+            </div>
+          </div>
+          <p class="text-slate-700 text-sm italic">"Great prices on frozen goat meat and tilapia. The shop is super clean and easy to browse."</p>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-4 mt-5">
+        <button id="prev-testimonial" type="button" class="w-8 h-8 rounded-full border border-slate-300 bg-white text-slate-700 hover:border-brand flex items-center justify-center font-bold text-xs">←</button>
+        <div class="flex items-center gap-1.5" id="slider-dots">
+          <span class="dot w-2.5 h-2.5 rounded-full bg-brand cursor-pointer"></span>
+          <span class="dot w-2.5 h-2.5 rounded-full bg-slate-300 cursor-pointer"></span>
+          <span class="dot w-2.5 h-2.5 rounded-full bg-slate-300 cursor-pointer"></span>
+        </div>
+        <button id="next-testimonial" type="button" class="w-8 h-8 rounded-full border border-slate-300 bg-white text-slate-700 hover:border-brand flex items-center justify-center font-bold text-xs">→</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="py-14 bg-brand text-white text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-display text-3xl font-extrabold mb-3">Visit Nimistores Today</h2>
+      <p class="text-blue-100 text-sm mb-6">Unit 26A Morelands Trading Estate, Bristol Road, Gloucester GL1 5RZ</p>
+      <a href="#contact" class="inline-block px-7 py-3 rounded-xl bg-white text-brand font-bold text-sm hover:bg-slate-100 transition-all">
+        Get Directions & Order
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT & VISIT US -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10">
+        
+        <!-- Location Details -->
+        <div class="lg:col-span-5 space-y-6 reveal">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand">Visit Us</span>
+            <h2 class="font-display text-3xl font-extrabold text-slate-900 mt-1">Store Information</h2>
+          </div>
+
+          <div class="space-y-3 text-xs text-slate-600">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <p class="font-bold text-slate-900 text-sm">📍 Address</p>
+              <p class="mt-1">Unit 26A Morelands Trading Estate, Bristol Road, Gloucester GL1 5RZ, UK</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <p class="font-bold text-slate-900 text-sm">⏰ Opening Hours</p>
+              <p class="mt-1">Mon - Sat: 9:00 AM - 7:00 PM | Sun: 11:00 AM - 5:00 PM</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <p class="font-bold text-slate-900 text-sm">📞 Contact</p>
+              <p class="mt-1">Phone: +44 1452 300 123 | Email: info@nimistores.co.uk</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-7 reveal delay-100">
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
+            <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Send a Message</h3>
+            
+            <form id="contact-form" class="space-y-4" onsubmit="event.preventDefault(); alert('Message sent! We will get back to you shortly.');">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Name</label>
+                  <input type="text" required placeholder="John Doe" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs bg-white outline-none focus:border-brand">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Email</label>
+                  <input type="email" required placeholder="john@example.com" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs bg-white outline-none focus:border-brand">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Message</label>
+                <textarea rows="3" required placeholder="How can we help you?" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs bg-white outline-none focus:border-brand"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-lg bg-brand text-white font-bold text-xs hover:bg-brand-dark transition-all">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-lg bg-brand text-white flex items-center justify-center font-bold text-sm">N</div>
+        <span class="font-bold text-white text-base">Nimistores</span>
+      </div>
+      
+      <div class="flex items-center gap-6">
+        <a href="#products" class="hover:text-white">Products</a>
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#why-us" class="hover:text-white">Why Us</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </div>
+
+      <p>© 2026 Nimistores. Gloucester GL1 5RZ.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // Mobile Nav
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+          hamburgerIcon.classList.toggle('hidden');
+          closeIcon.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          });
+        });
+      }
+
+      // Scroll Reveals
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      reveals.forEach(el => observer.observe(el));
+
+      // Stat Counter
+      const statsSection = document.getElementById('stats-counter-section');
+      let statsAnimated = false;
+
+      const animateStats = () => {
+        const numbers = document.querySelectorAll('.stat-number');
+        numbers.forEach(num => {
+          const target = parseInt(num.getAttribute('data-target'), 10);
+          let current = 0;
+          const step = Math.ceil(target / 30);
+
+          const updateCounter = () => {
+            current += step;
+            if (current >= target) {
+              num.textContent = target.toLocaleString();
+            } else {
+              num.textContent = current.toLocaleString();
+              requestAnimationFrame(updateCounter);
+            }
+          };
+          updateCounter();
+        });
+      };
+
+      if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !statsAnimated) {
+              statsAnimated = true;
+              animateStats();
+            }
+          });
+        }, { threshold: 0.3 });
+
+        statsObserver.observe(statsSection);
+      }
+
+      // Testimonial Carousel
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const dots = document.querySelectorAll('.dot');
+      const prevBtn = document.getElementById('prev-testimonial');
+      const nextBtn = document.getElementById('next-testimonial');
+      let currentSlide = 0;
+      let autoplayTimer;
+
+      const showSlide = (index) => {
+        slides.forEach((slide, i) => {
+          if (i === index) slide.classList.remove('hidden');
+          else slide.classList.add('hidden');
+        });
+
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.remove('bg-slate-300');
+            dot.classList.add('bg-brand');
+          } else {
+            dot.classList.remove('bg-brand');
+            dot.classList.add('bg-slate-300');
+          }
+        });
+      };
+
+      const nextSlide = () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      };
+
+      const prevSlide = () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      };
+
+      if (prevBtn && nextBtn) {
+        nextBtn.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
+        prevBtn.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+
+        dots.forEach((dot, idx) => {
+          dot.addEventListener('click', () => {
+            currentSlide = idx;
+            showSlide(currentSlide);
+            resetAutoplay();
+          });
+        });
+
+        const startAutoplay = () => { autoplayTimer = setInterval(nextSlide, 5000); };
+        const resetAutoplay = () => { clearInterval(autoplayTimer); startAutoplay(); };
+        startAutoplay();
+      }
+
+    });
+  </script>
+</body>
+</html>

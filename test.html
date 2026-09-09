@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimistores — Authentic African Groceries in Gloucester</title>
+    <meta name="description"
+        content="Nimistores is your destination for authentic African groceries, ingredients and everyday favourites in Gloucester, UK. Visit us at Morelands Trading Estate.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#e6f0ff',
+                            100: '#b3d1ff',
+                            200: '#80b3ff',
+                            300: '#4d94ff',
+                            400: '#1a75ff',
+                            500: '#0056D2',
+                            600: '#004bb8',
+                            700: '#003d99',
+                            800: '#002e73',
+                            900: '#001f4d',
+                        },
+                        warm: {
+                            50: '#fefcf7',
+                            100: '#fdf6e8',
+                            200: '#fbefd1',
+                            300: '#f7e2a8',
+                            400: '#f0c94d',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Inter', 'system-ui', 'sans-serif'],
+                        body: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Minimal inline styles for animations - no separate stylesheet */
+        * {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hero-float {
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+
+        .hero-float-delay {
+            animation: heroFloat 6s ease-in-out 2s infinite;
+        }
+
+        .hero-float-delay2 {
+            animation: heroFloat 6s ease-in-out 4s infinite;
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-600 {
+            animation-delay: 0.6s;
+        }
+
+        .stagger-child {
+            opacity: 0;
+        }
+
+        .stagger-child.visible {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav id="navbar"
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/80 backdrop-blur-md border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                        <span class="text-white font-bold text-lg">N</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900 tracking-tight">Nimi<span
+                            class="text-brand-500">stores</span></span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#home"
+                        class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors duration-300">Home</a>
+                    <a href="#shop"
+                        class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors duration-300">Shop</a>
+                    <a href="#about"
+                        class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors duration-300">About</a>
+                    <a href="#why"
+                        class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors duration-300">Why
+                        Nimistores</a>
+                    <a href="#contact"
+                        class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors duration-300">Contact</a>
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 bg-brand-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-600 transition-all duration-300 hover:-translate-y-0.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Visit Us
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2 group"
+                    aria-label="Toggle mobile menu">
+                    <span
+                        class="block w-6 h-0.5 bg-gray-700 transition-all duration-300 origin-center group-[.active]:rotate-45 group-[.active]:translate-y-2"></span>
+                    <span
+                        class="block w-6 h-0.5 bg-gray-700 transition-all duration-300 group-[.active]:opacity-0"></span>
+                    <span
+                        class="block w-6 h-0.5 bg-gray-700 transition-all duration-300 origin-center group-[.active]:-rotate-45 group-[.active]:-translate-y-2"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-lg border-t border-gray-100">
+            <div class="px-6 py-6 space-y-4">
+                <a href="#home"
+                    class="block text-base font-medium text-gray-700 hover:text-brand-500 transition-colors">Home</a>
+                <a href="#shop"
+                    class="block text-base font-medium text-gray-700 hover:text-brand-500 transition-colors">Shop</a>
+                <a href="#about"
+                    class="block text-base font-medium text-gray-700 hover:text-brand-500 transition-colors">About</a>
+                <a href="#why"
+                    class="block text-base font-medium text-gray-700 hover:text-brand-500 transition-colors">Why
+                    Nimistores</a>
+                <a href="#contact"
+                    class="block text-base font-medium text-gray-700 hover:text-brand-500 transition-colors">Contact</a>
+                <a href="#contact"
+                    class="inline-flex items-center gap-2 bg-brand-500 text-white px-6 py-3 rounded-full text-sm font-semibold w-full justify-center mt-4">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Visit Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section id="home"
+        class="relative min-h-screen flex items-center bg-gradient-to-br from-white via-brand-50 to-warm-50 overflow-hidden pt-20">
+        <!-- Decorative background elements -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-brand-100/30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 left-0 w-72 h-72 bg-warm-200/30 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left Content -->
+                <div class="order-2 lg:order-1">
+                    <div class="animate-fade-in-up opacity-0"
+                        style="animation-delay:0.1s; animation-fill-mode:forwards;">
+                        <span
+                            class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold border border-brand-100 mb-6">
+                            <span class="w-2 h-2 bg-brand-500 rounded-full"></span>
+                            African Grocery Store in Gloucester
+                        </span>
+                    </div>
+
+                    <h1 class="animate-fade-in-up opacity-0 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6"
+                        style="animation-delay:0.2s; animation-fill-mode:forwards;">
+                        Authentic African Flavours, <span class="text-brand-500">Right Here</span> in Gloucester
+                    </h1>
+
+                    <p class="animate-fade-in-up opacity-0 text-lg sm:text-xl text-gray-600 mb-8 max-w-lg leading-relaxed"
+                        style="animation-delay:0.3s; animation-fill-mode:forwards;">
+                        Your destination for authentic African groceries, ingredients and everyday favourites.
+                    </p>
+
+                    <div class="animate-fade-in-up opacity-0 flex flex-col sm:flex-row gap-4"
+                        style="animation-delay:0.4s; animation-fill-mode:forwards;">
+                        <a href="#shop"
+                            class="inline-flex items-center justify-center gap-2 bg-brand-500 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-brand-600 transition-all duration-300 hover:-translate-y-0.5">
+                            Explore Our Store
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                        <a href="https://www.google.com/maps/search/Unit+26A+Morelands+Trading+Estate+Bristol+Road+Gloucester+GL1+5RZ"
+                            target="_blank" rel="noopener"
+                            class="inline-flex items-center justify-center gap-2 bg-white text-gray-700 px-8 py-4 rounded-full text-base font-semibold border-2 border-gray-200 hover:border-brand-500 hover:text-brand-500 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Image with floating cards -->
+                <div class="order-1 lg:order-2 relative">
+                    <div class="animate-fade-in-up opacity-0 relative"
+                        style="animation-delay:0.3s; animation-fill-mode:forwards;">
+                        <div class="relative rounded-3xl overflow-hidden border-2 border-white/60">
+                            <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=800&h=600&fit=crop&q=80"
+                                alt="Colourful array of African spices, grains and ingredients"
+                                class="w-full h-[400px] sm:h-[480px] object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
+                        </div>
+
+                        <!-- Floating card 1 -->
+                        <div
+                            class="hero-float absolute -top-4 -left-4 sm:top-4 sm:-left-8 bg-white rounded-2xl px-4 py-3 border border-gray-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-900">Authentic African</p>
+                                <p class="text-xs text-gray-500">Products</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating card 2 -->
+                        <div
+                            class="hero-float-delay absolute -bottom-4 -left-4 sm:bottom-8 sm:-left-6 bg-white rounded-2xl px-4 py-3 border border-gray-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-900">Based in</p>
+                                <p class="text-xs text-gray-500">Gloucester, UK</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating card 3 -->
+                        <div
+                            class="hero-float-delay2 absolute -bottom-4 -right-4 sm:bottom-4 sm:-right-8 bg-white rounded-2xl px-4 py-3 border border-gray-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-900">Quality You</p>
+                                <p class="text-xs text-gray-500">Can Trust</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FEATURED CATEGORIES ===================== -->
+    <section id="shop" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span
+                    class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold border border-brand-100 mb-4">
+                    Browse by Category
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                    Everything You Need, <span class="text-brand-500">All in One Place</span>
+                </h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+                    From pantry staples to speciality ingredients — explore our range of authentic African products.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Category 1: African Groceries -->
+                <a href="#"
+                    class="group relative rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 stagger-child"
+                    data-delay="0">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=500&fit=crop&q=80"
+                            alt="Fresh African grocery produce including vegetables"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                        <h3 class="text-white font-bold text-sm sm:text-base mb-1">African Groceries</h3>
+                        <span
+                            class="inline-flex items-center gap-1 text-white/70 text-xs font-medium group-hover:text-white transition-colors duration-300">
+                            Browse
+                            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Category 2: Rice & Grains -->
+                <a href="#"
+                    class="group relative rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 stagger-child"
+                    data-delay="100">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=500&fit=crop&q=80"
+                            alt="Various types of rice and grains in bowls"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                        <h3 class="text-white font-bold text-sm sm:text-base mb-1">Rice &amp; Grains</h3>
+                        <span
+                            class="inline-flex items-center gap-1 text-white/70 text-xs font-medium group-hover:text-white transition-colors duration-300">
+                            Browse
+                            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Category 3: Spices & Seasonings -->
+                <a href="#"
+                    class="group relative rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 stagger-child"
+                    data-delay="200">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=500&fit=crop&q=80"
+                            alt="Colourful African spices and seasonings"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                        <h3 class="text-white font-bold text-sm sm:text-base mb-1">Spices &amp; Seasonings</h3>
+                        <span
+                            class="inline-flex items-center gap-1 text-white/70 text-xs font-medium group-hover:text-white transition-colors duration-300">
+                            Browse
+                            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Category 4: Drinks -->
+                <a href="#"
+                    class="group relative rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 stagger-child"
+                    data-delay="300">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=500&fit=crop&q=80"
+                            alt="Refreshing African beverages and drinks"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                        <h3 class="text-white font-bold text-sm sm:text-base mb-1">Drinks</h3>
+                        <span
+                            class="inline-flex items-center gap-1 text-white/70 text-xs font-medium group-hover:text-white transition-colors duration-300">
+                            Browse
+                            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Category 5: Snacks -->
+                <a href="#"
+                    class="group relative rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 stagger-child"
+                    data-delay="400">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&h=500&fit=crop&q=80"
+                            alt="African snacks and treats"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                        <h3 class="text-white font-bold text-sm sm:text-base mb-1">Snacks</h3>
+                        <span
+                            class="inline-flex items-center gap-1 text-white/70 text-xs font-medium group-hover:text-white transition-colors duration-300">
+                            Browse
+                            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Category 6: Frozen Foods -->
+                <a href="#"
+                    class="group relative rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 stagger-child"
+                    data-delay="500">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=400&h=500&fit=crop&q=80"
+                            alt="Frozen African food products"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                        <h3 class="text-white font-bold text-sm sm:text-base mb-1">Frozen Foods</h3>
+                        <span
+                            class="inline-flex items-center gap-1 text-white/70 text-xs font-medium group-hover:text-white transition-colors duration-300">
+                            Browse
+                            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Category 7: Meat & Fish -->
+                <a href="#"
+                    class="group relative rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 stagger-child"
+                    data-delay="600">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&h=500&fit=crop&q=80"
+                            alt="Fresh meat and fish products"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                        <h3 class="text-white font-bold text-sm sm:text-base mb-1">Meat &amp; Fish</h3>
+                        <span
+                            class="inline-flex items-center gap-1 text-white/70 text-xs font-medium group-hover:text-white transition-colors duration-300">
+                            Browse
+                            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Category 8: Household Essentials -->
+                <a href="#"
+                    class="group relative rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 stagger-child"
+                    data-delay="700">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400&h=500&fit=crop&q=80"
+                            alt="Household essential products"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                        <h3 class="text-white font-bold text-sm sm:text-base mb-1">Household Essentials</h3>
+                        <span
+                            class="inline-flex items-center gap-1 text-white/70 text-xs font-medium group-hover:text-white transition-colors duration-300">
+                            Browse
+                            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== WHY CHOOSE NIMISTORES ===================== -->
+    <section id="why" class="py-20 lg:py-28 bg-gradient-to-b from-warm-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span
+                    class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold border border-brand-100 mb-4">
+                    Why Nimistores
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                    Why Customers <span class="text-brand-500">Choose Us</span>
+                </h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+                    We're more than a grocery store — we're your connection to authentic African food and culture.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Benefit 1 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 text-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-brand-50 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-500 transition-colors duration-500">
+                        <svg class="w-8 h-8 text-brand-500 group-hover:text-white transition-colors duration-500"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Authentic Products</h3>
+                    <p class="text-gray-500 leading-relaxed">Discover familiar African ingredients and trusted brands.
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 text-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-green-50 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-500 transition-colors duration-500">
+                        <svg class="w-8 h-8 text-green-600 group-hover:text-white transition-colors duration-500"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Quality First</h3>
+                    <p class="text-gray-500 leading-relaxed">Products selected with quality and customer satisfaction in
+                        mind.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 text-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-amber-50 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-500 transition-colors duration-500">
+                        <svg class="w-8 h-8 text-amber-600 group-hover:text-white transition-colors duration-500"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Convenient Location</h3>
+                    <p class="text-gray-500 leading-relaxed">Easily accessible from Gloucester and surrounding areas.
+                    </p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-brand-500 transition-all duration-500 text-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-purple-50 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-500 transition-colors duration-500">
+                        <svg class="w-8 h-8 text-purple-600 group-hover:text-white transition-colors duration-500"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Community Focused</h3>
+                    <p class="text-gray-500 leading-relaxed">A shop serving customers who value authentic African food
+                        and culture.</p>
+                </div>
+            </div>
+
+            <!-- Animated Stats -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16 fade-up">
+                <div class="text-center p-6 bg-white rounded-2xl border border-gray-100">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-500 counter" data-target="100">0</div>
+                    <div class="text-xs font-bold text-brand-500 -mt-1">+</div>
+                    <p class="text-sm text-gray-500 mt-2 font-medium">African Products</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-2xl border border-gray-100">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-500 counter" data-target="8">0</div>
+                    <p class="text-sm text-gray-500 mt-2 font-medium">Categories</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-2xl border border-gray-100">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-500 counter" data-target="7">0</div>
+                    <p class="text-sm text-gray-500 mt-2 font-medium">Days a Week</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-2xl border border-gray-100">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-500 counter" data-target="1">0</div>
+                    <p class="text-sm text-gray-500 mt-2 font-medium">Convenient Location</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ABOUT NIMISTORES ===================== -->
+    <section id="about" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Left Image -->
+                <div class="slide-left">
+                    <div class="relative">
+                        <div class="rounded-3xl overflow-hidden border-2 border-gray-100">
+                            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=700&h=500&fit=crop&q=80"
+                                alt="Inside view of an African grocery store with shelves of products"
+                                class="w-full h-[350px] sm:h-[450px] object-cover">
+                        </div>
+                        <!-- Accent decorative element -->
+                        <div
+                            class="absolute -bottom-4 -right-4 w-32 h-32 bg-brand-50 rounded-2xl -z-10 border border-brand-100">
+                        </div>
+                        <div
+                            class="absolute -top-4 -left-4 w-24 h-24 bg-warm-100 rounded-2xl -z-10 border border-warm-200">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="slide-right">
+                    <span
+                        class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold border border-brand-100 mb-6">
+                        About Us
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                        A Taste of Home <span class="text-brand-500">in Gloucester</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                        Nimistores is a destination for authentic African groceries and everyday essentials. Located in
+                        the heart of Gloucester at Morelands Trading Estate, we bring the flavours and ingredients of
+                        home closer to you.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                        Whether you're looking for pantry staples, speciality spices, or those hard-to-find ingredients
+                        that make your dishes truly authentic, Nimistores is here to serve you with care and quality.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold text-gray-700">Wide product range</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold text-gray-700">Friendly service</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold text-gray-700">Quality products</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 bg-brand-500 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-brand-600 transition-all duration-300 hover:-translate-y-0.5">
+                        Discover Nimistores
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PRODUCT SHOWCASE ===================== -->
+    <section class="py-20 lg:py-28 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span
+                    class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold border border-brand-100 mb-4">
+                    Popular Picks
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                    What's <span class="text-brand-500">Popular</span> In Store
+                </h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+                    A preview of the kind of authentic African products you'll find when you visit Nimistores.
+                </p>
+                <p class="text-xs text-gray-400 mt-2 italic">Demo products shown for illustration purposes.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Product 1 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-200 transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1567982047351-76b6f93e38ee?w=500&h=375&fit=crop&q=80"
+                            alt="Jollof rice ingredients including tomatoes, peppers and rice"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Jollof Rice Essentials</h3>
+                        <p class="text-sm text-gray-500 mb-4 leading-relaxed">Everything you need to prepare the perfect
+                            jollof rice at home.</p>
+                        <a href="#contact"
+                            class="inline-flex items-center gap-2 text-brand-500 text-sm font-semibold hover:text-brand-600 transition-colors duration-300 group-hover:gap-3">
+                            Shop In Store
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-200 transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?w=500&h=375&fit=crop&q=80"
+                            alt="Various African spices in colourful bowls"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">African Spices</h3>
+                        <p class="text-sm text-gray-500 mb-4 leading-relaxed">Aromatic spices to bring authentic African
+                            flavour to every meal.</p>
+                        <a href="#contact"
+                            class="inline-flex items-center gap-2 text-brand-500 text-sm font-semibold hover:text-brand-600 transition-colors duration-300 group-hover:gap-3">
+                            Shop In Store
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-200 transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1528825871115-3581a5e31e75?w=500&h=375&fit=crop&q=80"
+                            alt="Fresh ripe plantains"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Plantain</h3>
+                        <p class="text-sm text-gray-500 mb-4 leading-relaxed">Fresh, ripe plantains ready for frying,
+                            boiling or baking.</p>
+                        <a href="#contact"
+                            class="inline-flex items-center gap-2 text-brand-500 text-sm font-semibold hover:text-brand-600 transition-colors duration-300 group-hover:gap-3">
+                            Shop In Store
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-200 transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1474979266404-7f28a5585660?w=500&h=375&fit=crop&q=80"
+                            alt="Bottle of rich golden palm oil"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Palm Oil</h3>
+                        <p class="text-sm text-gray-500 mb-4 leading-relaxed">Premium palm oil — an essential ingredient
+                            in African cooking.</p>
+                        <a href="#contact"
+                            class="inline-flex items-center gap-2 text-brand-500 text-sm font-semibold hover:text-brand-600 transition-colors duration-300 group-hover:gap-3">
+                            Shop In Store
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-200 transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500&h=375&fit=crop&q=80"
+                            alt="Colourful African soft drinks and beverages"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">African Soft Drinks</h3>
+                        <p class="text-sm text-gray-500 mb-4 leading-relaxed">Refreshing beverages and soft drinks from
+                            across the continent.</p>
+                        <a href="#contact"
+                            class="inline-flex items-center gap-2 text-brand-500 text-sm font-semibold hover:text-brand-600 transition-colors duration-300 group-hover:gap-3">
+                            Shop In Store
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div
+                    class="fade-up group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-200 transition-all duration-500">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580013759032-7c7aae476ace?w=500&h=375&fit=crop&q=80"
+                            alt="Frozen food products in packaging"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Frozen Foods</h3>
+                        <p class="text-sm text-gray-500 mb-4 leading-relaxed">Convenient frozen options for quick and
+                            easy African meals.</p>
+                        <a href="#contact"
+                            class="inline-flex items-center gap-2 text-brand-500 text-sm font-semibold hover:text-brand-600 transition-colors duration-300 group-hover:gap-3">
+                            Shop In Store
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== STORE VISIT / LOCATION ===================== -->
+    <section id="contact" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative bg-gradient-to-br from-brand-500 to-brand-700 rounded-3xl overflow-hidden">
+                <!-- Decorative elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2">
+                </div>
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/3 rounded-full">
+                </div>
+
+                <div class="relative grid lg:grid-cols-2 gap-12 p-8 sm:p-12 lg:p-16">
+                    <!-- Left Content -->
+                    <div class="fade-up">
+                        <span
+                            class="inline-flex items-center gap-2 bg-white/10 text-white/90 px-4 py-1.5 rounded-full text-sm font-semibold border border-white/20 mb-6">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Find Us
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+                            Come Shop With Us
+                        </h2>
+                        <p class="text-lg text-white/80 mb-8 leading-relaxed">
+                            Visit Nimistores in person and explore our wide range of authentic African groceries,
+                            ingredients and everyday essentials.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://www.google.com/maps/search/Unit+26A+Morelands+Trading+Estate+Bristol+Road+Gloucester+GL1+5RZ"
+                                target="_blank" rel="noopener"
+                                class="inline-flex items-center justify-center gap-2 bg-white text-brand-600 px-8 py-4 rounded-full text-base font-semibold hover:bg-gray-50 transition-all duration-300">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                                </svg>
+                                Get Directions
+                            </a>
+                            <a href="#home"
+                                class="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-full text-base font-semibold border-2 border-white/30 hover:bg-white/10 transition-all duration-300">
+                                Visit Nimistores
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Address Card -->
+                    <div class="fade-up flex items-center">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 w-full">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-bold text-lg mb-2">Our Address</h3>
+                                    <address class="text-white/80 leading-relaxed not-italic">
+                                        Unit 26A Morelands Trading Estate<br>
+                                        Bristol Road<br>
+                                        Gloucester<br>
+                                        GL1 5RZ<br>
+                                        United Kingdom
+                                    </address>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-bold text-lg mb-2">Opening Hours</h3>
+                                    <p class="text-white/80">Visit us in store for our current opening hours.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-bold text-lg mb-2">Get in Touch</h3>
+                                    <p class="text-white/80">Contact details coming soon.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <section class="py-20 lg:py-28 bg-gradient-to-b from-warm-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span
+                    class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold border border-brand-100 mb-4">
+                    What Customers Say
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                    Loved by <span class="text-brand-500">Our Community</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Testimonial 1 -->
+                <div class="fade-up bg-white rounded-2xl p-8 border-2 border-gray-100 relative">
+                    <div class="text-brand-200 mb-4">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6 italic">
+                        "A great place to find authentic African ingredients without having to travel far."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center">
+                            <span class="text-brand-600 font-bold text-sm">SC</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Satisfied Customer</p>
+                            <p class="text-xs text-gray-400">Gloucester</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="fade-up bg-white rounded-2xl p-8 border-2 border-gray-100 relative">
+                    <div class="text-brand-200 mb-4">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6 italic">
+                        "The variety makes grocery shopping much easier. I can find everything I need in one place."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                            <span class="text-green-600 font-bold text-sm">RS</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Regular Shopper</p>
+                            <p class="text-xs text-gray-400">Cheltenham</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="fade-up bg-white rounded-2xl p-8 border-2 border-gray-100 relative">
+                    <div class="text-brand-200 mb-4">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6 italic">
+                        "A welcoming shop with products that remind you of home. Highly recommended."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+                            <span class="text-amber-600 font-bold text-sm">LC</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Loyal Customer</p>
+                            <p class="text-xs text-gray-400">Gloucester</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="py-20 lg:py-28 bg-gradient-to-r from-brand-500 to-brand-700 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-white/5 rounded-full -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full translate-y-1/2"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 fade-up">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+                Your Next African Grocery Stop <br class="hidden sm:block">Starts Here.
+            </h2>
+            <p class="text-lg sm:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Discover authentic flavours, familiar favourites and everyday essentials at Nimistores.
+            </p>
+            <a href="#contact"
+                class="inline-flex items-center gap-3 bg-white text-brand-600 px-10 py-5 rounded-full text-lg font-bold hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5">
+                Visit Nimistores
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-gray-900 text-gray-400 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+                <!-- Brand Column -->
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <a href="#home" class="flex items-center gap-2 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">N</span>
+                        </div>
+                        <span class="text-xl font-bold text-white tracking-tight">Nimi<span
+                                class="text-brand-400">stores</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-6">
+                        Your destination for authentic African groceries, ingredients and everyday essentials in
+                        Gloucester.
+                    </p>
+                    <!-- Social Icons -->
+                    <div class="flex gap-3">
+                        <a href="#"
+                            class="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors duration-300"
+                            aria-label="Facebook">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors duration-300"
+                            aria-label="Instagram">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors duration-300"
+                            aria-label="Twitter / X">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors duration-300"
+                            aria-label="TikTok">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-sm hover:text-brand-400 transition-colors duration-300">Home</a>
+                        </li>
+                        <li><a href="#shop" class="text-sm hover:text-brand-400 transition-colors duration-300">Shop</a>
+                        </li>
+                        <li><a href="#about" class="text-sm hover:text-brand-400 transition-colors duration-300">About
+                                Us</a></li>
+                        <li><a href="#why" class="text-sm hover:text-brand-400 transition-colors duration-300">Why
+                                Nimistores</a></li>
+                        <li><a href="#contact"
+                                class="text-sm hover:text-brand-400 transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h3 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Categories</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#shop" class="text-sm hover:text-brand-400 transition-colors duration-300">African
+                                Groceries</a></li>
+                        <li><a href="#shop" class="text-sm hover:text-brand-400 transition-colors duration-300">Rice
+                                &amp; Grains</a></li>
+                        <li><a href="#shop" class="text-sm hover:text-brand-400 transition-colors duration-300">Spices
+                                &amp; Seasonings</a></li>
+                        <li><a href="#shop"
+                                class="text-sm hover:text-brand-400 transition-colors duration-300">Drinks</a></li>
+                        <li><a href="#shop" class="text-sm hover:text-brand-400 transition-colors duration-300">Frozen
+                                Foods</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Visit Us</h3>
+                    <address class="not-italic space-y-3">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-sm leading-relaxed">Unit 26A Morelands Trading Estate, Bristol Road,
+                                Gloucester GL1 5RZ</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-sm">info@nimistores.com</span>
+                        </div>
+                    </address>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-gray-500">&copy; 2026 Nimistores. All rights reserved.</p>
+                <p class="text-xs text-gray-600">Demo website by design.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script>
+        // === Mobile Menu Toggle ===
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileBtn.classList.toggle('active');
+            if (mobileMenu.style.maxHeight) {
+                mobileMenu.style.maxHeight = null;
+            } else {
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileBtn.classList.remove('active');
+                mobileMenu.style.maxHeight = null;
+            });
+        });
+
+        // === Navbar Scroll Effect ===
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                navbar.classList.add('border-gray-200/60');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('border-gray-200/60');
+                navbar.classList.add('border-transparent');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        // === Scroll Reveal with Intersection Observer ===
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -80px 0px',
+            threshold: 0.1
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-up, fade-in, slide elements
+        document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // === Staggered Card Animations ===
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.getAttribute('data-delay') || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, parseInt(delay));
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.stagger-child').forEach(el => {
+            staggerObserver.observe(el);
+        });
+
+        // === Animated Counters ===
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(el => {
+            counterObserver.observe(el);
+        });
+
+        // === Smooth Scroll for Anchor Links ===
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetEl = document.querySelector(this.getAttribute('href'));
+                if (targetEl) {
+                    const navHeight = navbar.offsetHeight;
+                    const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
