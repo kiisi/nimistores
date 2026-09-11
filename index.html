@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nimistores | Authentic African Groceries in Gloucester</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -39,45 +42,67 @@
     </script>
 
     <style>
-        *, ::before, ::after { box-shadow: none !important; }
-        
-        .swiper-pagination-bullet { background: #fff; opacity: 0.5; }
-        .swiper-pagination-bullet-active { background: #fff; opacity: 1; }
+        *,
+        ::before,
+        ::after {
+            box-shadow: none !important;
+        }
+
+        .swiper-pagination-bullet {
+            background: #fff;
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #fff;
+            opacity: 1;
+        }
 
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         /* Image zoom hover effect */
-        .img-zoom { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .group:hover .img-zoom { transform: scale(1.05); }
+        .img-zoom {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .group:hover .img-zoom {
+            transform: scale(1.05);
+        }
     </style>
 </head>
+
 <body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden">
 
     <!-- Top Bar -->
-    <div class="bg-black text-white text-[10px] sm:text-xs font-bold py-2 text-center uppercase tracking-widest border-b border-slate-800">
+    <div
+        class="bg-black text-white text-[10px] sm:text-xs font-bold py-2 text-center uppercase tracking-widest border-b border-slate-800">
         FREE DELIVERY in Gloucester on all orders over £50
     </div>
 
     <!-- Navbar -->
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            
+
             <!-- Left: Menu + Logo -->
             <div class="flex items-center gap-6">
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-slate-900 hover:text-brand transition-colors text-xl">
+                <button id="mobile-menu-btn"
+                    class="md:hidden text-slate-900 hover:text-brand transition-colors text-xl">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <a href="#home" class="font-display font-black text-2xl sm:text-3xl tracking-tighter text-slate-900 flex items-center gap-2">
-                    <span class="w-8 h-8 sm:w-10 sm:h-10 bg-brand text-white flex items-center justify-center rounded-lg text-lg sm:text-xl">N</span>
+                <a href="#home"
+                    class="font-display font-black text-2xl sm:text-3xl tracking-tighter text-slate-900 flex items-center gap-2">
+                    <span
+                        class="w-8 h-8 sm:w-10 sm:h-10 bg-brand text-white flex items-center justify-center rounded-lg text-lg sm:text-xl">N</span>
                     NIMI<span class="text-brand">STORES</span>
                 </a>
             </div>
@@ -99,9 +124,11 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] transform -translate-x-full transition-transform duration-500 flex flex-col md:hidden">
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white z-[60] transform -translate-x-full transition-transform duration-500 flex flex-col md:hidden">
         <div class="px-6 h-20 border-b border-slate-100 flex items-center justify-between">
-            <a href="#home" class="font-display font-black text-2xl tracking-tighter text-slate-900 flex items-center gap-2">
+            <a href="#home"
+                class="font-display font-black text-2xl tracking-tighter text-slate-900 flex items-center gap-2">
                 <span class="w-8 h-8 bg-brand text-white flex items-center justify-center rounded-lg text-lg">N</span>
                 NIMI<span class="text-brand">STORES</span>
             </a>
@@ -109,7 +136,8 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-center gap-8 text-2xl font-black font-display uppercase tracking-widest">
+        <div
+            class="flex-1 flex flex-col items-center justify-center gap-8 text-2xl font-black font-display uppercase tracking-widest">
             <a href="#" class="mobile-nav-link hover:text-brand transition-colors">Shop</a>
             <a href="#" class="mobile-nav-link hover:text-brand transition-colors">About</a>
             <a href="#" class="mobile-nav-link hover:text-brand transition-colors">Contact</a>
@@ -121,45 +149,57 @@
         <div class="swiper heroSwiper w-full h-full">
             <div class="swiper-wrapper">
                 <!-- Slide 1 -->
-                <div class="swiper-slide relative">
-                    <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover opacity-70">
-                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
+                <div class="swiper-slide relative bg-slate-900">
+                    <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=1920&q=80"
+                        class="absolute inset-0 w-full h-full object-cover opacity-70">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent">
+                    </div>
                     <div class="relative h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:w-1/2">
-                        <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black text-white uppercase leading-[1.1] tracking-tight mb-8">
+                        <h1
+                            class="text-4xl sm:text-6xl font-display font-black text-white uppercase leading-tight tracking-tight mb-8">
                             THE BEST AFRICAN <br> GROCERIES FOR <br> YOUR HOME.
                         </h1>
                         <div>
-                            <a href="#categories" class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
+                            <a href="#categories"
+                                class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
                                 SHOP OUR SELECTION
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- Slide 2 -->
-                <div class="swiper-slide relative">
-                    <img src="https://images.unsplash.com/photo-1604543501726-5b437c35ebac?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover opacity-70">
-                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
+                <div class="swiper-slide relative bg-slate-900">
+                    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a"
+                        class="absolute inset-0 w-full h-full object-cover opacity-70">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent">
+                    </div>
                     <div class="relative h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:w-1/2">
-                        <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black text-white uppercase leading-[1.1] tracking-tight mb-8">
+                        <h1
+                            class="text-4xl sm:text-6xl font-display font-black text-white uppercase leading-tight tracking-tight mb-8">
                             AUTHENTIC SPICES <br> &amp; SEASONINGS <br> DELIVERED.
                         </h1>
                         <div>
-                            <a href="#categories" class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
+                            <a href="#categories"
+                                class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
                                 SHOP OUR SELECTION
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- Slide 3 -->
-                <div class="swiper-slide relative">
-                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover opacity-70">
-                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
+                <div class="swiper-slide relative bg-slate-900">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1920&q=80"
+                        class="absolute inset-0 w-full h-full object-cover opacity-70">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent">
+                    </div>
                     <div class="relative h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:w-1/2">
-                        <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black text-white uppercase leading-[1.1] tracking-tight mb-8">
+                        <h1
+                            class="text-4xl sm:text-6xl font-display font-black text-white uppercase leading-tight tracking-tight mb-8">
                             FRESH PRODUCE <br> SOURCED DIRECTLY <br> FOR YOU.
                         </h1>
                         <div>
-                            <a href="#categories" class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
+                            <a href="#categories"
+                                class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
                                 SHOP OUR SELECTION
                             </a>
                         </div>
@@ -173,32 +213,41 @@
     <!-- Categories Grid (Tall Banners) -->
     <section id="categories" class="py-20 max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
             <a href="#" class="group relative h-[600px] overflow-hidden reveal">
-                <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=800&q=80" class="img-zoom absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=800&q=80"
+                    class="img-zoom absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                </div>
                 <div class="absolute bottom-6 left-6 right-6">
-                    <div class="bg-black text-white text-center py-4 text-xs font-bold uppercase tracking-widest group-hover:bg-brand transition-colors duration-300">
+                    <div
+                        class="bg-black text-white text-center py-4 text-xs font-bold uppercase tracking-widest group-hover:bg-brand transition-colors duration-300">
                         AFRICAN GROCERIES +
                     </div>
                 </div>
             </a>
 
             <a href="#" class="group relative h-[600px] overflow-hidden reveal" style="transition-delay: 100ms;">
-                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80" class="img-zoom absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80"
+                    class="img-zoom absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                </div>
                 <div class="absolute bottom-6 left-6 right-6">
-                    <div class="bg-black text-white text-center py-4 text-xs font-bold uppercase tracking-widest group-hover:bg-brand transition-colors duration-300">
+                    <div
+                        class="bg-black text-white text-center py-4 text-xs font-bold uppercase tracking-widest group-hover:bg-brand transition-colors duration-300">
                         RICE &amp; GRAINS +
                     </div>
                 </div>
             </a>
 
             <a href="#" class="group relative h-[600px] overflow-hidden reveal" style="transition-delay: 200ms;">
-                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80" class="img-zoom absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80"
+                    class="img-zoom absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                </div>
                 <div class="absolute bottom-6 left-6 right-6">
-                    <div class="bg-black text-white text-center py-4 text-xs font-bold uppercase tracking-widest group-hover:bg-brand transition-colors duration-300">
+                    <div
+                        class="bg-black text-white text-center py-4 text-xs font-bold uppercase tracking-widest group-hover:bg-brand transition-colors duration-300">
                         SPICES &amp; SEASONINGS +
                     </div>
                 </div>
@@ -209,19 +258,22 @@
 
     <!-- Highlight Promo Banner -->
     <section class="relative h-[600px] w-full reveal">
-        <img src="https://images.unsplash.com/photo-1567982047351-76b6f93e38ee?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1567982047351-76b6f93e38ee?w=1920&q=80"
+            class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-brand/80 to-transparent"></div>
         <div class="relative h-full max-w-7xl mx-auto px-6 flex items-center justify-end">
-            
+
             <!-- Offset White Box -->
-            <div class="bg-white p-12 sm:p-16 max-w-lg text-center transform translate-y-12 shadow-none border border-slate-100">
+            <div
+                class="bg-white p-12 sm:p-16 max-w-lg text-center transform translate-y-12 shadow-none border border-slate-100">
                 <h2 class="font-display font-black text-3xl sm:text-4xl uppercase tracking-tight text-slate-900 mb-2">
                     WEEKEND BUNDLE SALE
                 </h2>
                 <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-widest mb-8">
                     BUY 2 ITEMS AND GET 1 FREE <br> + FREE LOCAL DELIVERY
                 </p>
-                <a href="#" class="inline-block bg-black text-white font-bold text-xs uppercase tracking-widest px-8 py-4 border border-black hover:bg-brand hover:border-brand transition-colors duration-300">
+                <a href="#"
+                    class="inline-block bg-black text-white font-bold text-xs uppercase tracking-widest px-8 py-4 border border-black hover:bg-brand hover:border-brand transition-colors duration-300">
                     SHOP BUNDLE OFFERS
                 </a>
             </div>
@@ -231,20 +283,25 @@
 
     <!-- New Arrivals Grid -->
     <section class="py-24 max-w-7xl mx-auto px-6 mt-12">
-        <h2 class="font-display font-black text-3xl text-center uppercase tracking-widest mb-16 reveal">NEW ARRIVALS</h2>
-        
+        <h2 class="font-display font-black text-3xl text-center uppercase tracking-widest mb-16 reveal">NEW ARRIVALS
+        </h2>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
-            
+
             <!-- Product 1 -->
             <a href="#" class="group block reveal">
                 <div class="aspect-[4/5] overflow-hidden bg-slate-100 mb-4 relative">
-                    <img src="https://images.unsplash.com/photo-1528825871115-3581a5e31e75?w=600&q=80" class="img-zoom w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="bg-white text-black font-bold text-xs uppercase tracking-widest px-6 py-3">QUICK VIEW</span>
+                    <img src="https://images.unsplash.com/photo-1528825871115-3581a5e31e75?w=600&q=80"
+                        class="img-zoom w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="bg-white text-black font-bold text-xs uppercase tracking-widest px-6 py-3">QUICK
+                            VIEW</span>
                     </div>
                 </div>
                 <div class="text-center">
-                    <h3 class="font-bold text-sm uppercase tracking-wide text-slate-900 mb-1">Fresh Yellow Plantains</h3>
+                    <h3 class="font-bold text-sm uppercase tracking-wide text-slate-900 mb-1">Fresh Yellow Plantains
+                    </h3>
                     <p class="text-brand font-black">£8.50</p>
                 </div>
             </a>
@@ -252,9 +309,12 @@
             <!-- Product 2 -->
             <a href="#" class="group block reveal" style="transition-delay: 100ms;">
                 <div class="aspect-[4/5] overflow-hidden bg-slate-100 mb-4 relative">
-                    <img src="https://images.unsplash.com/photo-1474979266404-7f28a5585660?w=600&q=80" class="img-zoom w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="bg-white text-black font-bold text-xs uppercase tracking-widest px-6 py-3">QUICK VIEW</span>
+                    <img src="https://images.unsplash.com/photo-1474979266404-7f28a5585660?w=600&q=80"
+                        class="img-zoom w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="bg-white text-black font-bold text-xs uppercase tracking-widest px-6 py-3">QUICK
+                            VIEW</span>
                     </div>
                 </div>
                 <div class="text-center">
@@ -266,9 +326,13 @@
             <!-- Product 3 -->
             <a href="#" class="group block reveal" style="transition-delay: 200ms;">
                 <div class="aspect-[4/5] overflow-hidden bg-slate-100 mb-4 relative">
-                    <img src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?w=600&q=80" class="img-zoom w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="bg-white text-white bg-transparent border-2 border-white font-bold text-xs uppercase tracking-widest px-6 py-3 hover:bg-white hover:text-black transition-colors">QUICK VIEW</span>
+                    <img src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?w=600&q=80"
+                        class="img-zoom w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span
+                            class="bg-white text-white bg-transparent border-2 border-white font-bold text-xs uppercase tracking-widest px-6 py-3 hover:bg-white hover:text-black transition-colors">QUICK
+                            VIEW</span>
                     </div>
                 </div>
                 <div class="text-center">
@@ -280,9 +344,12 @@
             <!-- Product 4 -->
             <a href="#" class="group block reveal" style="transition-delay: 300ms;">
                 <div class="aspect-[4/5] overflow-hidden bg-slate-100 mb-4 relative">
-                    <img src="https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=600&q=80" class="img-zoom w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="bg-white text-black font-bold text-xs uppercase tracking-widest px-6 py-3">QUICK VIEW</span>
+                    <img src="https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=600&q=80"
+                        class="img-zoom w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="bg-white text-black font-bold text-xs uppercase tracking-widest px-6 py-3">QUICK
+                            VIEW</span>
                     </div>
                 </div>
                 <div class="text-center">
@@ -292,9 +359,11 @@
             </a>
 
         </div>
-        
+
         <div class="text-center mt-12 reveal">
-             <a href="#" class="inline-block border-b-2 border-black text-black font-bold text-xs uppercase tracking-widest pb-1 hover:text-brand hover:border-brand transition-colors">VIEW ALL PRODUCTS</a>
+            <a href="#"
+                class="inline-block border-b-2 border-black text-black font-bold text-xs uppercase tracking-widest pb-1 hover:text-brand hover:border-brand transition-colors">VIEW
+                ALL PRODUCTS</a>
         </div>
     </section>
 
@@ -305,7 +374,8 @@
             UNIT 26A MORELANDS TRADING ESTATE <br>
             BRISTOL ROAD, GLOUCESTER GL1 5RZ
         </p>
-        <a href="#" class="inline-block mt-8 bg-brand text-white font-bold text-xs uppercase tracking-widest px-8 py-4 border border-brand hover:bg-black hover:border-black transition-colors duration-300">
+        <a href="#"
+            class="inline-block mt-8 bg-brand text-white font-bold text-xs uppercase tracking-widest px-8 py-4 border border-brand hover:bg-black hover:border-black transition-colors duration-300">
             GET DIRECTIONS
         </a>
     </section>
@@ -317,7 +387,7 @@
                 <span class="w-8 h-8 bg-brand text-white flex items-center justify-center rounded-lg text-lg">N</span>
                 NIMI<span class="text-brand">STORES</span>
             </div>
-            
+
             <div class="flex gap-6 text-sm font-bold tracking-widest uppercase">
                 <a href="#" class="hover:text-brand transition-colors">Shop</a>
                 <a href="#" class="hover:text-brand transition-colors">About</a>
@@ -341,6 +411,9 @@
         new Swiper('.heroSwiper', {
             loop: true,
             effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
             autoplay: { delay: 5000, disableOnInteraction: false },
             pagination: { el: '.swiper-pagination', clickable: true },
         });
@@ -372,4 +445,5 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
+
 </html>
