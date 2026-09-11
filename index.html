@@ -72,13 +72,21 @@
             
             <!-- Left: Menu + Logo -->
             <div class="flex items-center gap-6">
-                <button class="text-slate-900 hover:text-brand transition-colors text-xl">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-900 hover:text-brand transition-colors text-xl">
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <a href="#home" class="font-display font-black text-2xl sm:text-3xl tracking-tighter text-slate-900 flex items-center gap-2">
                     <span class="w-8 h-8 sm:w-10 sm:h-10 bg-brand text-white flex items-center justify-center rounded-lg text-lg sm:text-xl">N</span>
                     NIMI<span class="text-brand">STORES</span>
                 </a>
+            </div>
+
+            <!-- Center: Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold tracking-widest uppercase text-slate-900">
+                <a href="#" class="hover:text-brand transition-colors">Shop</a>
+                <a href="#" class="hover:text-brand transition-colors">About</a>
+                <a href="#" class="hover:text-brand transition-colors">Contact</a>
             </div>
 
             <!-- Right: Search -->
@@ -89,6 +97,24 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] transform -translate-x-full transition-transform duration-500 flex flex-col md:hidden">
+        <div class="px-6 h-20 border-b border-slate-100 flex items-center justify-between">
+            <a href="#home" class="font-display font-black text-2xl tracking-tighter text-slate-900 flex items-center gap-2">
+                <span class="w-8 h-8 bg-brand text-white flex items-center justify-center rounded-lg text-lg">N</span>
+                NIMI<span class="text-brand">STORES</span>
+            </a>
+            <button id="mobile-close-btn" class="text-slate-900 hover:text-brand transition-colors text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center gap-8 text-2xl font-black font-display uppercase tracking-widest">
+            <a href="#" class="mobile-nav-link hover:text-brand transition-colors">Shop</a>
+            <a href="#" class="mobile-nav-link hover:text-brand transition-colors">About</a>
+            <a href="#" class="mobile-nav-link hover:text-brand transition-colors">Contact</a>
+        </div>
+    </div>
 
     <!-- Hero Swiper -->
     <section id="home" class="relative h-[80vh] sm:h-[90vh] min-h-[600px] w-full bg-slate-900">
@@ -101,6 +127,36 @@
                     <div class="relative h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:w-1/2">
                         <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black text-white uppercase leading-[1.1] tracking-tight mb-8">
                             THE BEST AFRICAN <br> GROCERIES FOR <br> YOUR HOME.
+                        </h1>
+                        <div>
+                            <a href="#categories" class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
+                                SHOP OUR SELECTION
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide relative">
+                    <img src="https://images.unsplash.com/photo-1604543501726-5b437c35ebac?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover opacity-70">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
+                    <div class="relative h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:w-1/2">
+                        <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black text-white uppercase leading-[1.1] tracking-tight mb-8">
+                            AUTHENTIC SPICES <br> &amp; SEASONINGS <br> DELIVERED.
+                        </h1>
+                        <div>
+                            <a href="#categories" class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
+                                SHOP OUR SELECTION
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="swiper-slide relative">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover opacity-70">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
+                    <div class="relative h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:w-1/2">
+                        <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black text-white uppercase leading-[1.1] tracking-tight mb-8">
+                            FRESH PRODUCE <br> SOURCED DIRECTLY <br> FOR YOU.
                         </h1>
                         <div>
                             <a href="#categories" class="inline-block bg-black text-white font-bold text-sm uppercase tracking-widest px-8 py-4 border border-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300">
@@ -288,6 +344,21 @@
             autoplay: { delay: 5000, disableOnInteraction: false },
             pagination: { el: '.swiper-pagination', clickable: true },
         });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileCloseBtn = document.getElementById('mobile-close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('-translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileCloseBtn.addEventListener('click', toggleMobileMenu);
+        mobileNavLinks.forEach(link => link.addEventListener('click', toggleMobileMenu));
 
         // Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
